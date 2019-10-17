@@ -38,9 +38,6 @@ public class Application implements CommandLineRunner {
         for (Customer customer : repository.findByLastName("Smith")) {
             System.out.println(customer);
         }
-        for (Customer customer : repository.findByEmail("alice.smith@email.com")) {
-            System.out.println(customer);
-        }
-
+        System.out.println(repository.findByEmail("alice.smith@email.com"));
     }
 }
