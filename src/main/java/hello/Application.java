@@ -4,31 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.MongoTemplate;
-
-import java.util.List;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
     @Autowired
     private CustomerRepository repository;
-
-//    @Override
-//    public Customer findByEmail(String email){
-//        Query query = new Query();
-//        query.addCriteria(Criteria.where("lastname").is(email));
-//        return mongoTemplate.findOne(query, Customer.class);
-//    }
-
-//    @Override
-//    public Person findOneByName(String name) {
-//        Query query = new Query();
-//        query.addCriteria(Criteria.where("name").is(name));
-//        return mongoTemplate.findOne(query, Person.class);
-//    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -57,7 +38,9 @@ public class Application implements CommandLineRunner {
         for (Customer customer : repository.findByLastName("Smith")) {
             System.out.println(customer);
         }
-//        List<Customer> maListe = findByEmail("Smith");
-//        System.out.println(maListe);
+        for (Customer customer : repository.findByEmail("alice.smith@email.com")) {
+            System.out.println(customer);
+        }
+
     }
 }
